@@ -1,0 +1,76 @@
+//BST Algorithm Insertion
+
+Step 1: Start  
+Step 2: Read the value to insert (key)  
+Step 3: If root is NULL  
+            Create a new node with key and assign it to root  
+            Go to Step 6  
+Step 4: Initialize traversal – set current = root  
+Step 5: Repeat the following steps until insertion is done:  
+        If key < current.value  
+            If current.left is NULL  
+                Create a new node with key and assign it to current.left  
+                Go to Step 6  
+            Else  
+                Set current = current.left  
+        Else if key > current.value  
+            If current.right is NULL  
+                Create a new node with key and assign it to current.right  
+                Go to Step 6  
+            Else  
+                Set current = current.right  
+        Else  
+            Key already exists (duplicates not allowed)  
+            Go to Step 6  
+Step 6: Stop  
+
+
+//TOH recursive algorithm
+
+Step 1: Start  
+Step 2: Read n, source, destination, auxiliary  
+Step 3: If n == 1:  
+            Move disk 1 from source to destination  
+            Go to Step 6  
+Step 4: Recursively move (n-1) disks from source to auxiliary (using destination as temp):  
+            Call TOH(n-1, source, auxiliary, destination)  
+Step 5: Move remaining disk from source to destination:  
+            Move disk n from source to destination  
+            Recursively move (n-1) disks from auxiliary to destination (using source as temp):  
+                Call TOH(n-1, auxiliary, destination, source)  
+Step 6: Stop  
+
+
+//Infix to Postfix conversion algorithm
+
+Step 1: Start  
+Step 2: Read the infix expression   
+Step 3: Initialize an empty stack and an empty postfix string  
+Step 4: Scan each token in the infix expression (left to right):  
+
+        If the token is an operand (letter/number):  
+            Append it to the postfix string  
+            Go to Step 4 (next token)  
+
+        Else if the token is an opening parenthesis "(":  
+            Push "(" onto the stack  
+            Go to Step 4  
+
+        Else if the token is a closing parenthesis ")":  
+            While stack is not empty AND top of stack ≠ "(":  
+                Pop the top of stack and append to postfix  
+            Pop "(" from stack (discard it)  
+            Go to Step 4  
+
+        Else if the token is an operator (+, -, *, /, ^):  
+            While stack is not empty AND precedence(top) ≥ precedence(token):  
+                Pop the top of stack and append to postfix  
+            Push the current token onto the stack  
+            Go to Step 4  
+
+Step 5: After scanning all tokens, pop remaining operators from stack:  
+        While stack is not empty:  
+            Pop the top of stack and append to postfix  
+
+Step 6: Stop  
+      
